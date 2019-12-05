@@ -1,3 +1,4 @@
+window.state = [];
 
 const f =() =>{
     return fetch('https://jsonplaceholder.typicode.com/todos/1')
@@ -7,12 +8,11 @@ const f =() =>{
 };
 const Util = () => {
     const result = f();
-    return result.then(response => {
-            const util = document.createElement('p');
-            util.textContent = `userId: ${response.userId}, id: ${response.id}, title: ${response.title}, completed: ${response.completed}`;
-            return util;
+    return result.then(res => {
+            window.state.push(res);
         })
-    
 }
+
+
 
 window.util = Util;
